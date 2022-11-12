@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CustomView</string>
+    <string name="bottom_sheet_dialog">Bottom Sheet Dialog</string>
+    <string name="dialog_title">弹窗标题</string>
+    <string name="float_view">Float View</string>
+    <string name="drag_recycler_view">Drag Recycler View</string>
+</resources>
