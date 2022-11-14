@@ -6,6 +6,7 @@ import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.zrq.customview.databinding.ActivityMainBinding
+import com.zrq.customview.drag.DragRvActivity
 import com.zrq.customview.view.FloatView
 import kotlin.math.sqrt
 

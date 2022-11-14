@@ -1,22 +1,28 @@
-package com.zrq.customview
+package com.zrq.customview.drag
 
+import android.annotation.SuppressLint
+import android.graphics.Canvas
+import android.graphics.drawable.GradientDrawable
 import android.util.Log
+import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.zrq.customview.R
+import com.zrq.customview.VH
+import com.zrq.customview.databinding.ItemDragViewBinding
 import java.util.*
+import kotlin.math.abs
 
 class DragCallBack(
     private val adapter: DragAdapter,
     private val data: MutableList<String>
 ) : ItemTouchHelper.Callback() {
 
-    private var mRecyclerView: RecyclerView? = null
-
     override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
-        mRecyclerView = recyclerView
         var dragFlags = 0
         var swipeFlags = 0
         return when (recyclerView.layoutManager) {
@@ -52,14 +58,16 @@ class DragCallBack(
         return true
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         if (direction == ItemTouchHelper.START) {
-            Log.i(TAG, "-->")
-        } else {
             Log.i(TAG, "<--")
+        } else {
+            Log.i(TAG, "-->")
         }
         val position = viewHolder.adapterPosition
         data.removeAt(position)
+        Log.d(TAG, "onSwiped: $data")
         adapter.notifyItemRemoved(position)
     }
 
@@ -70,15 +78,32 @@ class DragCallBack(
             }
             else -> {
                 viewHolder?.let {
-                    ViewCompat.animate(it.itemView).setDuration(200).scaleX(1.2f).scaleY(1.2f).start()
+                    ViewCompat.animate(it.itemView).setDuration(200).scaleX(1.1f).scaleY(1.1f).start()
+                    val drawable = viewHolder.itemView.background as GradientDrawable
+                    drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.green_)
                 }
             }
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
         ViewCompat.animate(viewHolder.itemView).setDuration(200).scaleX(1f).scaleY(1f).start()
+        val drawable = viewHolder.itemView.background as GradientDrawable
+        drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.green)
+    }
+
+    override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+            val drawable = viewHolder.itemView.background as GradientDrawable
+            if (abs(dX) > 200) {
+                drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.red)
+            } else {
+                drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.green)
+            }
+        }
+        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
 
     companion object {
