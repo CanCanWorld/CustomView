@@ -66,6 +66,8 @@ class DragCallBack(
             Log.i(TAG, "-->")
         }
         val position = viewHolder.adapterPosition
+        val drawable = viewHolder.itemView.background as GradientDrawable
+        drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.green)
         data.removeAt(position)
         Log.d(TAG, "onSwiped: $data")
         adapter.notifyItemRemoved(position)
@@ -89,6 +91,7 @@ class DragCallBack(
     @SuppressLint("NotifyDataSetChanged")
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
+        Log.d(TAG, "clearView: ")
         ViewCompat.animate(viewHolder.itemView).setDuration(200).scaleX(1f).scaleY(1f).start()
         val drawable = viewHolder.itemView.background as GradientDrawable
         drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.green)
@@ -99,8 +102,6 @@ class DragCallBack(
             val drawable = viewHolder.itemView.background as GradientDrawable
             if (abs(dX) > 200) {
                 drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.red)
-            } else {
-                drawable.color = ContextCompat.getColorStateList(viewHolder.itemView.context, R.color.green)
             }
         }
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)

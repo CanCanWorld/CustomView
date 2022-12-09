@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zrq.customview.OnItemClickListener
 import com.zrq.customview.databinding.ActivityDragRvBinding
-import com.zrq.customview.drag2.Drag2Adapter
-import com.zrq.customview.drag2.ItemTouchHelperCallback
 import kotlin.collections.ArrayList
 
 class DragRvActivity : AppCompatActivity(), OnItemClickListener {
@@ -23,7 +21,6 @@ class DragRvActivity : AppCompatActivity(), OnItemClickListener {
 
     private lateinit var mBinding: ActivityDragRvBinding
     private lateinit var mAdapter: DragAdapter
-//    private lateinit var mAdapter: Drag2Adapter
     private val list = ArrayList<String>()
 
     private fun initData() {
@@ -33,11 +30,9 @@ class DragRvActivity : AppCompatActivity(), OnItemClickListener {
         }
 
         mAdapter = DragAdapter(this, list, this)
-//        mAdapter = Drag2Adapter(this, list, this)
         mBinding.recyclerView.adapter = mAdapter
         mBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         val dragCallBack = DragCallBack(mAdapter, list)
-//        val dragCallBack = ItemTouchHelperCallback(mAdapter)
         val itemTouchHelper = ItemTouchHelper(dragCallBack)
         itemTouchHelper.attachToRecyclerView(mBinding.recyclerView)
     }

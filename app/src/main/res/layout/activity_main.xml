@@ -32,4 +32,36 @@
         android:textStyle="bold"
         app:cornerRadius="20dp" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_snow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snow"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/image"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_demo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/demo"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_demo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/demo2"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
 </LinearLayout>

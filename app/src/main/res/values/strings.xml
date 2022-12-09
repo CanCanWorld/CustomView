@@ -5,4 +5,8 @@
     <string name="float_view">Float View</string>
     <string name="drag_recycler_view">Drag Recycler View</string>
     <string name="delete">删除</string>
+    <string name="snow">snow</string>
+    <string name="image">image</string>
+    <string name="demo">demo</string>
+    <string name="demo2">demo2</string>
 </resources>
