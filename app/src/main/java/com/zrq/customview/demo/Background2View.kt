@@ -53,6 +53,8 @@ class Background2View : View {
             min(heightSize, defaultHeight)
         }
 
+        setMeasuredDimension(mWidth, mHeight)
+
     }
 
     @SuppressLint("DrawAllocation")

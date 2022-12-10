@@ -5,23 +5,21 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.view.DragEvent
-import android.view.View
+import android.util.Log
+import android.widget.ProgressBar
 import com.zrq.customview.Util.dp2px
 import java.lang.Integer.min
 
-class HorizontalProgress : View {
+class HorizontalProgress : ProgressBar {
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    var max = 100
-    var progress = 0
-
-    private var defaultWidth = dp2px(context, 200)
-    private var defaultHeight = dp2px(context, 20)
-    private var unReachedBarColor = Color.WHITE
+    private var defaultWidth = dp2px(context, 400)
+    private var defaultHeight = dp2px(context, 50)
+    private var unReachedBarColor = Color.YELLOW
     private var reachedBarColor = Color.GREEN
+    private var textColor = Color.BLACK
     private var mWidth = 0
     private var mHeight = 0
     private val paint = Paint()
@@ -34,14 +32,14 @@ class HorizontalProgress : View {
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
         val heightSize = MeasureSpec.getSize(heightMeasureSpec)
         mWidth = if (widthMode == MeasureSpec.EXACTLY) {
-            widthMeasureSpec
+            widthSize
         } else {
-            min(defaultWidth, widthMeasureSpec)
+            min(defaultWidth, widthSize)
         }
         mHeight = if (heightMode == MeasureSpec.EXACTLY) {
-            heightMeasureSpec
+            heightSize
         } else {
-            min(defaultHeight, heightMeasureSpec)
+            min(defaultHeight, heightSize)
         }
         setMeasuredDimension(mWidth, mHeight)
     }
@@ -57,13 +55,35 @@ class HorizontalProgress : View {
         canvas?.translate(paddingLeft.toFloat(), height / 2.0f)
         val rate = progress * 1.0f / max
 
-        val progressPos = (mWidth * rate).toInt()
+        Log.d(TAG, "progress: $progress")
 
-        paint.measureText("$progress%")
+        var progressPos = mWidth * rate
+        val text = "${rate.toInt()}%"
 
+        val textWidth = paint.measureText(text)
+        val textHeight = (paint.descent() + paint.ascent()) / 2
+
+        if (progressPos + textWidth > mWidth) {
+            progressPos = mWidth - textWidth
+        }
+
+        paint.color = reachedBarColor
+        paint.strokeWidth = mHeight.toFloat()
+        Log.d(TAG, "progressPos: $progressPos")
+        canvas?.drawLine(0f, 0f, progressPos, 0f, paint)
+
+        paint.color = textColor
+        paint.strokeWidth = 20f
+        canvas?.drawText(text, progressPos, -textHeight, paint)
 
         canvas?.restore()
+
+        postInvalidateDelayed(100)
+
     }
 
+    companion object{
+        const val TAG = "HorizontalProgress"
+    }
 
 }

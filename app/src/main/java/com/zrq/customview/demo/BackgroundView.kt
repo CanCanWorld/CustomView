@@ -36,8 +36,6 @@ class BackgroundView : View {
 
     private var time: Int = 0
 
-    private var pressPoint = Point()
-
     init {
         paint2.color = Color.argb(0x02, 0xff, 0xff, 0xff)
     }
@@ -59,6 +57,8 @@ class BackgroundView : View {
         } else {
             min(heightSize, defaultHeight)
         }
+
+        setMeasuredDimension(mWidth, mHeight)
 
     }
 
@@ -98,14 +98,6 @@ class BackgroundView : View {
                     it.point.x = 0
                 }
                 canvas?.drawCircle(it.point.x.toFloat(), it.point.y.toFloat(), it.radius.toFloat(), paint)
-
-                canvas?.drawCircle(pressPoint.x.toFloat(), pressPoint.y.toFloat(), 100f, paint2)
-
-                if ((it.point.x in pressPoint.x - 50..pressPoint.x + 50) && (it.point.y in pressPoint.y - 50..pressPoint.y + 50)) {
-                    if (it.point.x > pressPoint.x) {
-                    } else {
-                    }
-                }
             }
         }
 
@@ -117,12 +109,8 @@ class BackgroundView : View {
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         when (event?.action) {
             MotionEvent.ACTION_MOVE -> {
-                pressPoint.x = event.x.toInt()
-                pressPoint.y = event.y.toInt()
             }
             MotionEvent.ACTION_UP -> {
-                pressPoint.x = -100
-                pressPoint.y = -100
             }
             else -> {}
         }
