@@ -11,9 +11,8 @@ import com.zrq.customview.demo.Demo2Activity
 import com.zrq.customview.demo.DemoActivity
 import com.zrq.customview.drag.DragRvActivity
 import com.zrq.customview.float.FloatView
+import com.zrq.customview.flow.FlowActivity
 import com.zrq.customview.img.ImageActivity
-import com.zrq.customview.progress.ProgressActivity
-import com.zrq.customview.seekbar.SeekbarActivity
 import com.zrq.customview.snow.SnowActivity
 
 
@@ -63,11 +62,8 @@ class MainActivity : AppCompatActivity() {
             btnDemo2.setOnClickListener {
                 startActivity(Intent(this@MainActivity, Demo2Activity::class.java))
             }
-            btnProgress.setOnClickListener {
-                startActivity(Intent(this@MainActivity, ProgressActivity::class.java))
-            }
-            btnSeekbar.setOnClickListener {
-                startActivity(Intent(this@MainActivity, SeekbarActivity::class.java))
+            btnFlow.setOnClickListener {
+                startActivity(Intent(this@MainActivity, FlowActivity::class.java))
             }
 
         }

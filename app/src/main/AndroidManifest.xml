@@ -16,10 +16,7 @@
         android:theme="@style/Theme.CustomView"
         tools:targetApi="31">
         <activity
-            android:name=".seekbar.SeekbarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".progress.ProgressActivity"
+            android:name=".flow.FlowActivity"
             android:exported="false" />
         <activity
             android:name=".demo.Demo2Activity"

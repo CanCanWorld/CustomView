@@ -11,4 +11,5 @@
     <string name="demo2">demo2</string>
     <string name="progress">progress</string>
     <string name="seekbar">seekbar</string>
+    <string name="flow_layout">flow layout</string>
 </resources>
