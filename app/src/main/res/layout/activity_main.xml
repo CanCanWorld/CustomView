@@ -17,14 +17,6 @@
         app:cornerRadius="20dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_float_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/float_view"
-        android:textStyle="bold"
-        app:cornerRadius="20dp" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_drag_rv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,14 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/snow"
-        android:textStyle="bold"
-        app:cornerRadius="20dp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/image"
         android:textStyle="bold"
         app:cornerRadius="20dp" />
 
@@ -69,6 +53,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/flow_layout"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_swipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/swipe"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_switcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/switcher"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog"
         android:textStyle="bold"
         app:cornerRadius="20dp" />
 

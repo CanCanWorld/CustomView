@@ -38,7 +38,16 @@ class DragRvActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     private fun initEvent() {
-
+        mBinding.apply {
+            pullToRefresh.setOnRefreshListener {
+                Thread {
+                    Thread.sleep(2000)
+                    runOnUiThread{
+                        pullToRefresh.isRefreshing = false
+                    }
+                }.start()
+            }
+        }
     }
 
     override fun onItemClick(view: View, position: Int) {
