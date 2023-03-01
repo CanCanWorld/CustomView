@@ -16,13 +16,13 @@
         android:theme="@style/Theme.CustomView"
         tools:targetApi="31">
         <activity
+            android:name=".surface.SinActivity"
+            android:exported="false" />
+        <activity
             android:name=".switcher.SwitcherActivity"
             android:exported="false" />
         <activity
             android:name=".swipe.SwipeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".explosion.ExplosionActivity"
             android:exported="false" />
         <activity
             android:name=".flow.FlowActivity"
@@ -32,9 +32,6 @@
             android:exported="false" />
         <activity
             android:name=".demo.DemoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".img.ImageActivity"
             android:exported="false" />
         <activity
             android:name=".snow.SnowActivity"

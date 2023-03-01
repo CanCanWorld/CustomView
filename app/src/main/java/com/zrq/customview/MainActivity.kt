@@ -17,6 +17,7 @@ import com.zrq.customview.demo.DemoActivity
 import com.zrq.customview.drag.DragRvActivity
 import com.zrq.customview.flow.FlowActivity
 import com.zrq.customview.snow.SnowActivity
+import com.zrq.customview.surface.SinActivity
 import com.zrq.customview.swipe.SwipeActivity
 import com.zrq.customview.switcher.SwitcherActivity
 
@@ -106,6 +107,9 @@ class MainActivity : AppCompatActivity() {
                         it.show()
                     }
                 }
+            }
+            btnSin.setOnClickListener {
+                startActivity(Intent(that, SinActivity::class.java))
             }
         }
 
