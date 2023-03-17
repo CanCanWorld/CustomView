@@ -8,6 +8,11 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
+    <com.zrq.customview.flow.FlowLayout
+        android:id="@+id/flowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_bottom"
         android:layout_width="wrap_content"
@@ -88,5 +93,20 @@
         android:textStyle="bold"
         app:cornerRadius="20dp" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_draw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/draw"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_study"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/study"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
 
 </LinearLayout>

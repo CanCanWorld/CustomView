@@ -3,13 +3,17 @@ package com.zrq.customview.flow
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.annotation.LayoutRes
 import com.zrq.customview.R
 
 class FlowLayout : ViewGroup {
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
+
     @SuppressLint("CustomViewStyleable")
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         if (context != null) {
@@ -25,6 +29,18 @@ class FlowLayout : ViewGroup {
     private var usedWidth = 0
     private var curLinesNum = 0
 
+    @LayoutRes
+    var itemLayoutId: Int = R.layout.item_flow
+
+    fun addItemView(text: String, onItemClickListener: () -> Unit): FlowLayout {
+        val view = LayoutInflater.from(context).inflate(itemLayoutId, null)
+        view.findViewById<TextView>(R.id.tv_title).text = text
+        view.setOnClickListener { onItemClickListener() }
+        addView(view)
+        return this
+    }
+
+    @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
@@ -34,6 +50,7 @@ class FlowLayout : ViewGroup {
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val heightSize = totalHeight - paddingTop - paddingBottom
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
+        curLine = Line()
         lines.clear()
         lines.add(curLine)
         usedWidth = 0

@@ -16,6 +16,15 @@
         android:theme="@style/Theme.CustomView"
         tools:targetApi="31">
         <activity
+            android:name=".buxiugang.BuXiuGangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".study.StudyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawActivity"
+            android:exported="false" />
+        <activity
             android:name=".surface.SinActivity"
             android:exported="false" />
         <activity

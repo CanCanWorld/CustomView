@@ -39,11 +39,9 @@ class FlowActivity : AppCompatActivity() {
             for (i in 0..20) {
                 list.add(i.toString())
             }
+            flowLayout.itemLayoutId = R.layout.item_flow
             list.forEach {
-                val view = LayoutInflater.from(this@FlowActivity).inflate(R.layout.item_flow, null)
-                view.tag = it
-                view.findViewById<TextView>(R.id.tv_title).text = it
-                flowLayout.addView(view)
+                flowLayout.addItemView(it) {}
             }
         }
     }

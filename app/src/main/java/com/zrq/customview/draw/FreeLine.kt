@@ -9,7 +9,7 @@ class FreeLine(
     y: Float,
     private val size: Float,
     private val color: Int
-) {
+) : Action(color) {
 
     private val path: Path = Path()
 
@@ -18,7 +18,7 @@ class FreeLine(
         path.lineTo(x, y)
     }
 
-    fun draw(canvas: Canvas) {
+    override fun draw(canvas: Canvas) {
         val paint = Paint()
         paint.isAntiAlias = true
         paint.isDither = true
@@ -28,7 +28,7 @@ class FreeLine(
         canvas.drawPath(path, paint)
     }
 
-    fun move(x: Float, y: Float) {
+    override fun move(x: Float, y: Float) {
         path.lineTo(x, y)
     }
 }

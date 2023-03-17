@@ -4,7 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 
 abstract class Action(
-    var color: Int = Color.BLACK
+   private var color: Int = Color.BLACK
 ) {
     abstract fun draw(canvas: Canvas)
 
