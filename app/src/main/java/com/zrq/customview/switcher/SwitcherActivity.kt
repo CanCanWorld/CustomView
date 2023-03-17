@@ -2,20 +2,11 @@ package com.zrq.customview.switcher
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.zrq.customview.databinding.ActivitySwitcherBinding
+import com.zrq.customview.R
 
 class SwitcherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivitySwitcherBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
-
-        mBinding.switcher.setOnCheckedChangeListener {
-            Log.d("TAG", "onCreate: $it")
-        }
+        setContentView(R.layout.activity_switcher)
     }
-
-    private lateinit var mBinding: ActivitySwitcherBinding
-
 }
