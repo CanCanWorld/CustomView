@@ -4,4 +4,8 @@
     <declare-styleable name="FlowLayout">
         <attr name="lines"/>
     </declare-styleable>
+    <attr name="pixelSize" format="integer"/>
+    <declare-styleable name="PixelDrawView">
+        <attr name="pixelSize"/>
+    </declare-styleable>
 </resources>

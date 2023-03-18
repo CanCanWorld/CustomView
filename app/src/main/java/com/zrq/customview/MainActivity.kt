@@ -19,6 +19,7 @@ import com.zrq.customview.demo.DemoActivity
 import com.zrq.customview.drag.DragRvActivity
 import com.zrq.customview.draw.DrawActivity
 import com.zrq.customview.flow.FlowActivity
+import com.zrq.customview.pixel.PixelActivity
 import com.zrq.customview.snow.SnowActivity
 import com.zrq.customview.study.StudyActivity
 import com.zrq.customview.surface.SinActivity
@@ -126,6 +127,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 .addItemView("BuXiuGang") {
                     startActivity(Intent(that, BuXiuGangActivity::class.java))
+                }
+                .addItemView("Pixel") {
+                    startActivity(Intent(that, PixelActivity::class.java))
                 }
         }
 
